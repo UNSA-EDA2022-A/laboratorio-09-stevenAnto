@@ -1,4 +1,4 @@
-//package com.example.project;
+package com.example.project;
 
 import java.util.ArrayList;
 
@@ -90,17 +90,22 @@ public class GraphAdjacentList implements Graph {
   }
 
   public boolean removeVertex(int vertex){
+    System.out.println("entro a eliminarVertex "+vertex);
     Vertex eliminado=null;
     for(Vertex v:vertices){
       if(vertex == v.data){
 	eliminado= v;
-	  break;
+	System.out.println("encontroel vertice");
+	break;
       }
     }
     if(eliminado!=null){
       //elimino todas las aristas de dicho Vertex;
       for(int i=0;i<eliminado.adjacentVertices.size();i++){
 	this.removeEdge(eliminado.data,eliminado.adjacentVertices.get(i).data);
+      }
+      for(int j=0;j<vertices.size();j++){
+	this.removeEdge(vertices.get(j).data,eliminado.data);
       }
       this.vertices.remove(eliminado);
       this.numVertices--;
