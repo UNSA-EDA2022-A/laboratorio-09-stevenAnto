@@ -1,3 +1,4 @@
+package com.example.project;
 public class LinkedListStack<T extends Comparable<T>>{
 
   private SinglyLinkedList<T> list;
